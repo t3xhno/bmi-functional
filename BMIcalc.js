@@ -1,7 +1,7 @@
 // Import dataset and libs
-const dataset = require('./data');
-const { mapping, filtering, compose, transduce } = require('./functionalLib');
-const { timeIt } = require('./timingLib');
+const dataset = require('./data/data');
+const { mapping, filtering, compose, transduce } = require('./libs/functionalLib');
+const { timeIt } = require('./libs/timingLib');
 
 // Define filters and maps needed
 const getBMI = ({ height: h, weight: w, ...rest }) => ({ bmi: w / h ** 2, ...rest });

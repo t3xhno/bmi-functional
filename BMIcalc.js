@@ -22,7 +22,7 @@ const dataset = [
 const getBMI = ({ height, weight, ...rest }) => ({ bmi: weight / height ** 2, ...rest });
 const roundDec = ({ bmi, ...rest }) => ({ bmi: bmi.toFixed(2), ...rest });
 const isObese = ({ bmi, ...rest }) => bmi > 25.0;
-const formatOutput = obj => `${obj.name} has a BMI of ${obj.bmi}, which indicates obesity.`;
+const formatOutput = ({ name, bmi }) => `${name} has a BMI of ${bmi}, which indicates obesity.`;
 // Put them together in an xform composer, and run it
 const xform = compose(mapping(getBMI), mapping(roundDec), filtering(isObese), mapping(formatOutput));
 const outputData = transduce(xform, redFn, [], dataset);

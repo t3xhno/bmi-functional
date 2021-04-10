@@ -25,5 +25,6 @@ const isObese = ({ bmi, ...rest }) => bmi > 25.0;
 const formatOutput = ({ name, bmi }) => `${name} has a BMI of ${bmi}, which indicates obesity.`;
 // Put them together in an xform composer, and run it
 const xform = compose(mapping(getBMI), mapping(roundDec), filtering(isObese), mapping(formatOutput));
+const start = process.hrtime();
 const outputData = transduce(xform, redFn, [], dataset);
-console.log(outputData.join('\n'));
+console.log(`Execution time: ${process.hrtime(start)[0] + process.hrtime(start)[1] / 1000000}s.`);

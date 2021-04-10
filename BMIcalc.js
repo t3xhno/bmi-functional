@@ -19,7 +19,7 @@ const dataset = [
     {name: 'Nikola', weight: 98, height: 1.5},
 ];
 // Define filters and maps needed
-const getBMI = ({ height, weight, ...rest }) => ({ bmi: weight / height ** 2, ...rest });
+const getBMI = ({ height: h, weight: w, ...rest }) => ({ bmi: w / h ** 2, ...rest });
 const roundDec = ({ bmi, ...rest }) => ({ bmi: bmi.toFixed(2), ...rest });
 const isObese = ({ bmi, ...rest }) => bmi > 25.0;
 const formatOutput = ({ name, bmi }) => `${name} has a BMI of ${bmi}, which indicates obesity.`;

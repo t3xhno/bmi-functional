@@ -1,11 +1,7 @@
 // Import dataset and libs
 const dataset = require('./data');
-const F = require('./functionalLib');
-const T = require('./timingLib');
-
-// Destructure libs to make them nicer to use
-const { mapping, filtering, compose, transduce } = F;
-const { timeIt } = T;
+const { mapping, filtering, compose, transduce } = require('./functionalLib');
+const { timeIt } = require('./timingLib');
 
 // Desctucture console
 const { log } = console;

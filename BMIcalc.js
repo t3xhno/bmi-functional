@@ -11,4 +11,4 @@ const formatOutput = ({ name, bmi }) => `${name} has a BMI of ${bmi}, which indi
 
 // Put them together in an xform composer, and run it
 const xform = compose(mapping(getBMI), mapping(roundDec(2)), filtering(isObese), mapping(formatOutput));
-console.log(timeIt(transduce)(xform, [], dataset.data));
+console.log(timeIt(transduce)(xform, dataset.data));

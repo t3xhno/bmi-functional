@@ -3,9 +3,6 @@ const dataset = require('./data');
 const { mapping, filtering, compose, transduce } = require('./functionalLib');
 const { timeIt } = require('./timingLib');
 
-// Desctucture console
-const { log } = console;
-
 // Define filters and maps needed
 const getBMI = ({ height: h, weight: w, ...rest }) => ({ bmi: w / h ** 2, ...rest });
 const roundDec = places => ({ bmi, ...rest }) => ({ bmi: bmi.toFixed(places), ...rest });
@@ -14,4 +11,4 @@ const formatOutput = ({ name, bmi }) => `${name} has a BMI of ${bmi}, which indi
 
 // Put them together in an xform composer, and run it
 const xform = compose(mapping(getBMI), mapping(roundDec(2)), filtering(isObese), mapping(formatOutput));
-log(timeIt(transduce)(xform, [], dataset.data));
+console.log(timeIt(transduce)(xform, [], dataset.data));

@@ -3,6 +3,10 @@ const dataset = require('./data');
 const F = require('./functionalLib');
 const T = require('./timingLib');
 
+// Destructure libs to make them nicer to use
+const { mapping, filtering, compose, transduce } = F;
+const { timeIt } = T;
+
 // Desctucture console
 const { log } = console;
 
@@ -13,5 +17,5 @@ const isObese = ({ bmi, ...rest }) => bmi > 25.0;
 const formatOutput = ({ name, bmi }) => `${name} has a BMI of ${bmi}, which indicates obesity.`;
 
 // Put them together in an xform composer, and run it
-const xform = F.compose(F.mapping(getBMI), F.mapping(roundDec(2)), F.filtering(isObese), F.mapping(formatOutput));
-log(T.timeIt(F.transduce)(xform, [], dataset.data));
+const xform = compose(mapping(getBMI), mapping(roundDec(2)), filtering(isObese), mapping(formatOutput));
+log(timeIt(transduce)(xform, [], dataset.data));

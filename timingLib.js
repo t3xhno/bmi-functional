@@ -9,4 +9,4 @@ const timeIt = fn => (...args) => {
     return output;
 };
 
-module.exports = { tElapsed, timeIt };
+module.exports = { timeIt };

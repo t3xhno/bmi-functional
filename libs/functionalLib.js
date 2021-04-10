@@ -4,6 +4,6 @@ const redFn = (acc, x) => acc.concat(x);
 const mapping = fn => reducer => (acc, x) => reducer(acc, fn(x));
 const filtering = pred => reducer => (acc, x) => pred(x) ? reducer(acc, x) : acc;
 const compose = (...fns) => arg => fns.reduceRight((acc, fn) => fn(acc), arg);
-const transduce = (xform, data, init = [], reducer = redFn) => data.reduce(xform(reducer), init);
+const transduce = (xform, data, reducer = redFn, init = [],) => data.reduce(xform(reducer), init);
 
 module.exports = { mapping, filtering, transduce, compose };
